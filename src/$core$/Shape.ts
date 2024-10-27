@@ -35,7 +35,7 @@ import styles from "../$scss$/_GridDesign.scss?inline";
 const loadInlineStyle = (inline: string)=>{
     const style = document.createElement("style");
     //style.innerHTML = inline;
-    style.innerHTML = `@import(${URL.createObjectURL(new Blob([inline], {type: "text/css"}))})`;
+    style.innerHTML = `@import url("${URL.createObjectURL(new Blob([inline], {type: "text/css"}))}");`;
     document.head.appendChild(style);
 }
 
