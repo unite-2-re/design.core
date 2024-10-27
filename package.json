@@ -1,10 +1,10 @@
 {
-    "name": "image-ts",
-    "description": "Image wallpaper library",
+    "name": "design-ts",
+    "description": "Design set...",
     "version": "1.0.0alpha",
     "private": false,
     "type": "module",
-    "index": "./dist/image.js",
+    "index": "./dist/design.js",
     "scripts": {
         "dev": "vite",
         "worker": "vite build",
