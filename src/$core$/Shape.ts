@@ -34,6 +34,7 @@ import styles from "../$scss$/_GridDesign.scss?inline";
 //
 const loadInlineStyle = (inline: string)=>{
     const style = document.createElement("style");
+    style.dataset.owner = "design";
     //style.innerHTML = inline;
     style.innerHTML = `@import url("${URL.createObjectURL(new Blob([inline], {type: "text/css"}))}");`;
     document.head.appendChild(style);
@@ -44,6 +45,7 @@ const loadBlobStyle = (inline: string)=>{
     const style = document.createElement("link");
     style.rel = "stylesheet";
     style.type = "text/css";
+    style.dataset.owner = "design";
     style.href = URL.createObjectURL(new Blob([inline], {type: "text/css"}));
     document.head.appendChild(style);
     return style;
