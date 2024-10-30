@@ -114,7 +114,7 @@
             }
 
             //
-            &[data-dragging="true"] { z-index: 99; }
+            &[data-dragging] { z-index: 99; }
 
             //
             & > :where(*) {
