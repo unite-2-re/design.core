@@ -52,41 +52,49 @@ const hash = async (string) => {
 }
 
 //
-const loadStyleSheet = async (inline: string, base?: [any, any])=>{
+const preInit = URL.createObjectURL(new Blob([styles], {type: "text/css"}));
+const integrity = hash(styles);
+
+//
+export const styleCode = {preInit, integrity, styles};
+
+//
+const loadStyleSheet = async (inline: string, base?: [any, any], integrity?: string|Promise<string>)=>{
     const url = URL.canParse(inline) ? inline : URL.createObjectURL(new Blob([inline], {type: "text/css"}));
-    if (base?.[0] && !URL.canParse(inline) && base?.[0] instanceof HTMLLinkElement) {
-        base[0].setAttribute("integrity", await hash(inline));
+    if (base?.[0] && (!URL.canParse(inline) || integrity) && base?.[0] instanceof HTMLLinkElement) {
+        base[0].setAttribute("integrity", await (integrity || hash(inline)));
     }
     if (base) setStyleURL(base, url);
 }
 
 //
-const loadBlobStyle = (inline: string)=>{
+const loadBlobStyle = (inline: string, integrity?: string|Promise<string>)=>{
     const style = document.createElement("link");
     style.rel = "stylesheet";
     style.type = "text/css";
     style.crossOrigin = "same-origin";
     style.dataset.owner = OWNER;
-    loadStyleSheet(inline, [style, "href"]);
+    loadStyleSheet(inline, [style, "href"], integrity);
     document.head.appendChild(style);
     return style;
 }
 
 //
-const loadInlineStyle = (inline: string, rootElement = document.head)=>{
-    const PLACE = (rootElement.querySelector("head") ?? rootElement);
-    if (PLACE instanceof HTMLHeadElement) { loadBlobStyle(inline); }
+const loadInlineStyle = (inline: string, rootElement = document.head, $integrity = integrity)=>{
+    const PLACE = (rootElement?.querySelector?.("head") ?? rootElement) as HTMLElement;
+    if (PLACE instanceof HTMLHeadElement) { return loadBlobStyle(inline); }
 
     //
     const style = document.createElement("style");
     style.dataset.owner = OWNER;
-    loadStyleSheet(inline, [style, "innerHTML"]);
-    PLACE.appendChild(style);
+    loadStyleSheet(inline, [style, "innerHTML"], $integrity);
+    PLACE?.appendChild?.(style);
+    return style;
 }
 
 //
-const initialize = ()=>{
-    loadBlobStyle(styles);
+const initialize = (rootElement = document.head)=>{
+    loadInlineStyle(preInit, rootElement);
 }
 
 //
