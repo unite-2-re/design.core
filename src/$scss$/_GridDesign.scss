@@ -7,7 +7,7 @@
     //
     [data-shape="wavy"] .u2-item-design, .u2-item-design[data-shape="wavy"] {
         & {
-            --clip-amplitude: 0.06;
+            --clip-amplitude: 0.05;
             --clip-freq: 8;
             --clip-path: #{s.Integrate("WavyFx", 100)};
             --corrector: 1.1;
