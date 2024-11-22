@@ -44,8 +44,8 @@
 
         //
         & {
-            --padding-h: 1rem;
-            --padding-v: 1.5rem;
+            --padding-h: 2cqmin;
+            --padding-v: 2cqmax;
         }
 
         //
@@ -58,7 +58,7 @@
             contain: strict;
 
             //
-            pointer-events: auto;
+            pointer-events: none;
             overflow: visible;
 
             //
@@ -89,23 +89,33 @@
     .u2-grid-page {
         & { pointer-events: none; };
         & {
-            --c-gap: calc(4dvmin / max(var(--zoom, 1), 0.125));
-            --r-gap: calc(4dvmin / max(var(--zoom, 1), 0.125));
+            --c-gap: 3cqmin;
+            --r-gap: 3cqmin;
         }
 
         //
         .u2-grid-item {
             @include ps.grid-layout(
-                minmax(0px, max-content),
-                minmax(0px, max-content)
+                minmax(0px, 1fr),
+                minmax(0px, 1fr)
             );
 
             //
             & {
-                inline-size: max-content;
-                block-size: max-content;
+                min-inline-size: 1px;
+                min-block-size: 1px;
+
+                //
+                inline-size: 100%;//max-content;
+                block-size: 100%;//max-content;
+
+                //
+                max-inline-size: var(--icon-size, 1px);
+                max-block-size: var(--icon-size, 1px);
+
+                //
                 overflow: visible;
-                filter: drop-shadow(0px 0px 0.25rem #00000060);
+                filter: drop-shadow(0px 0px 0.25rem #00000060) !important;
                 isolation: isolate;
                 backdrop-filter: none;
                 border: none 0px transparent;
@@ -113,8 +123,14 @@
                 line-height: 0;
             }
 
+            // if interpolation keywords supported
+            @supports (min-inline-size: max(1px, max-content)) {
+                min-inline-size: max(1px, max-content);
+                min-block-size: max(1px, max-content);
+            }
+
             //
-            &[data-dragging] { z-index: 99; }
+            &[data-dragging] { z-index: calc(99 + var(--z-index, 0)) !important; }
 
             //
             & > :where(*) {
@@ -122,6 +138,10 @@
                 grid-column: 1 / 1 span;
                 grid-row: 1 / 1 span;
                 overflow: visible;
+
+                //
+                inline-size: 100%;//max-content;
+                block-size: 100%;//max-content;
             }
         }
 
@@ -196,6 +216,10 @@
                 scale: var(--scale, 1);
                 translate: 0px 0px 0px !important;
                 transform: none !important;
+
+                //
+                inline-size: 100%;
+                block-size: 100%;
             }
         }
     }
