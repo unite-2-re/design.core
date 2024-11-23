@@ -162,6 +162,10 @@
                 overflow: visible;
 
                 //
+                inline-size: max-content !important;
+                block-size: max-content !important;
+
+                //
                 font-size: calc(var(--icon-size) * 0.175);
                 filter: drop-shadow(0px 0px 0.25rem #00000080);
             }
@@ -221,6 +225,15 @@
                 inline-size: 100%;
                 block-size: 100%;
             }
+        }
+    }
+
+    //
+    :where(body, html, :root, :host, :scope):has(*[data-dragging]), *[data-dragging],
+    :where(body, html, :root, :host, :scope):has(*[data-dragging]:active), *[data-dragging]:active,
+    :where(body, html, :root, :host, :scope):has(*[data-dragging]:hover), *[data-dragging]:hover {
+        &, & > :where(*) {
+            cursor: grabbing !important;
         }
     }
 };
