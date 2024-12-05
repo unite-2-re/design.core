@@ -89,8 +89,8 @@
     .u2-grid-page {
         & { pointer-events: none; };
         & {
-            --c-gap: 3cqmin;
-            --r-gap: 3cqmin;
+            --c-gap: min(1rem, calc(4cqmin / var(--layout-c, 4)));
+            --r-gap: min(1rem, calc(4cqmin / var(--layout-r, 8)));
         }
 
         //
