@@ -89,8 +89,8 @@
     .u2-grid-page {
         & { pointer-events: none; };
         & {
-            --c-gap: min(1rem, calc(4cqmin / var(--layout-c, 4)));
-            --r-gap: min(1rem, calc(4cqmin / var(--layout-r, 8)));
+            --c-gap: clamp(max(0.5rem, 8cqmin), min(calc(4cqmin / min(var(--layout-c, 4), var(--layout-r, 8))), calc(4cqmax / max(var(--layout-c, 4), var(--layout-r, 8)))), max(1rem, 16cqmin));
+            --r-gap: clamp(max(0.5rem, 8cqmin), min(calc(4cqmin / min(var(--layout-c, 4), var(--layout-r, 8))), calc(4cqmax / max(var(--layout-c, 4), var(--layout-r, 8)))), max(1rem, 16cqmin));
         }
 
         //
