@@ -44,8 +44,8 @@
 
         //
         & {
-            --padding-h: 2cqmin;
-            --padding-v: 2cqmax;
+            --padding-h: max(4cqmin, 1rem);
+            --padding-v: max(3cqmax, 1rem);
         }
 
         //
