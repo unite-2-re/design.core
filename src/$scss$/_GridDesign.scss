@@ -229,11 +229,11 @@
     }
 
     //
-    :where(body, html, :root, :host, :scope):has(*[data-dragging]), *[data-dragging],
+    /*:where(body, html, :root, :host, :scope):has(*[data-dragging]), *[data-dragging],
     :where(body, html, :root, :host, :scope):has(*[data-dragging]:active), *[data-dragging]:active,
     :where(body, html, :root, :host, :scope):has(*[data-dragging]:hover), *[data-dragging]:hover {
         &, & > :where(*) {
             cursor: grabbing !important;
         }
-    }
+    }*/
 };
