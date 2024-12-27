@@ -28,15 +28,11 @@ export const WavyShapedCircle = (steps = 100, amplitude = 0.05, freq = 8) => {
     };
 };
 
-// @ts-ignore
-import styles from "../$scss$/_GridDesign.scss?inline&compress";
+
+
 
 //
-const OWNER = "design";
-
-//
-const setStyleURL = (base: [any, any], url: string)=>{
-    //
+const setStyleURL = (base: [any, any], url: string) => {
     if (base[1] == "innerHTML") {
         base[0][base[1]] = `@import url("${url}");`;
     } else {
@@ -49,6 +45,14 @@ const hash = async (string: string) => {
     const hashBuffer = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(string));
     return "sha256-" + btoa(String.fromCharCode.apply(null, new Uint8Array(hashBuffer) as unknown as number[]));
 }
+
+// @ts-ignore
+import styles from "../$scss$/_GridDesign.scss?inline&compress";
+
+//
+const OWNER = "design";
+const preInit = URL.createObjectURL(new Blob([styles], {type: "text/css"}));
+const integrity = hash(styles);
 
 //
 const loadStyleSheet = async (inline: string, base?: [any, any], integrity?: string|Promise<string>)=>{
@@ -63,13 +67,6 @@ const loadStyleSheet = async (inline: string, base?: [any, any], integrity?: str
     }
     if (base) setStyleURL(base, url);
 }
-
-//
-const preInit = URL.createObjectURL(new Blob([styles], {type: "text/css"}));
-const integrity = hash(styles);
-
-//
-export const styleCode = {preInit, integrity, styles};
 
 //
 const loadBlobStyle = (inline: string, integrity?: string|Promise<string>)=>{
