@@ -1,8 +1,16 @@
-export * from "./$core$/Shape";
-import init from "./$core$/Shape";
-export default init;
+// @ts-ignore
+import { hash, loadInlineStyle } from "/externals/lib/dom.js";
+
+// @ts-ignore
+import styles from "./$scss$/_GridDesign.scss?inline&compress";
+const preInit = URL.createObjectURL(new Blob([styles], {type: "text/css"}));
+const integrity = hash(styles);
 
 //
-//import "./$scss$/_Shape.scss";
-//import "./$scss$/_Backdrop.scss";
-//import "./$scss$/_GridDesign.scss";
+const initialize = (rootElement = document.head)=>{
+    loadInlineStyle(preInit, rootElement);
+}
+
+//
+export default initialize;
+export * from "./$core$/Shape";
