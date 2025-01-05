@@ -44,8 +44,8 @@
 
         //
         & {
-            --padding-h: max(4cqmin, 2.5rem);
-            --padding-v: max(3cqmax, 1rem);
+            --padding-h: min(6cqmin, 3rem);
+            --padding-v: min(6cqmax, 3rem);
         }
 
         //
@@ -89,8 +89,8 @@
     .u2-grid-page {
         & { pointer-events: none; };
         & {
-            --c-gap: clamp(max(0.5rem, 8cqmin), min(calc(4cqmin / min(var(--layout-c, 4), var(--layout-r, 8))), calc(4cqmax / max(var(--layout-c, 4), var(--layout-r, 8)))), max(1rem, 16cqmin));
-            --r-gap: clamp(max(0.5rem, 8cqmin), min(calc(4cqmin / min(var(--layout-c, 4), var(--layout-r, 8))), calc(4cqmax / max(var(--layout-c, 4), var(--layout-r, 8)))), max(1rem, 16cqmin));
+            --c-gap: clamp(min(0.5rem, 8cqmin), min(calc(4cqmin / min(var(--layout-c, 4), var(--layout-r, 8))), calc(4cqmax / max(var(--layout-c, 4), var(--layout-r, 8)))), min(1rem, 16cqmin));
+            --r-gap: clamp(min(0.5rem, 8cqmin), min(calc(4cqmin / min(var(--layout-c, 4), var(--layout-r, 8))), calc(4cqmax / max(var(--layout-c, 4), var(--layout-r, 8)))), min(1rem, 16cqmin));
         }
 
         //
