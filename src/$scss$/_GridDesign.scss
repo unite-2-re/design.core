@@ -153,6 +153,7 @@
 
             //
             & {
+                font-weight: bold;
                 pointer-events: none;
                 display: inline flow;
                 overflow: visible;
@@ -163,7 +164,7 @@
 
                 //
                 font-size: calc(var(--icon-size) * 0.175);
-                filter: drop-shadow(0px 0px 0.25rem #00000080);
+                filter: drop-shadow(0px 0px 0.25rem #00000060) !important;
             }
         }
 
