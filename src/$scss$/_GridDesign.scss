@@ -45,7 +45,7 @@
         //
         & {
             --padding-h: min(6cqmin, 3rem);
-            --padding-v: min(6cqmax, 3rem);
+            --padding-v: min(4cqmax, 4rem);
         }
 
         //
@@ -88,10 +88,6 @@
     //
     .u2-grid-page {
         & { pointer-events: none; };
-        & {
-            --c-gap: clamp(min(0.5rem, 8cqmin), min(calc(4cqmin / min(var(--layout-c, 4), var(--layout-r, 8))), calc(4cqmax / max(var(--layout-c, 4), var(--layout-r, 8)))), min(1rem, 16cqmin));
-            --r-gap: clamp(min(0.5rem, 8cqmin), min(calc(4cqmin / min(var(--layout-c, 4), var(--layout-r, 8))), calc(4cqmax / max(var(--layout-c, 4), var(--layout-r, 8)))), min(1rem, 16cqmin));
-        }
 
         //
         .u2-grid-item {
