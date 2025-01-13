@@ -205,11 +205,6 @@
                 display: flex;
 
                 //
-                scale: var(--scale, 1);
-                translate: 0px 0px 0px !important;
-                transform: none !important;
-
-                //
                 inline-size: 100%;
                 block-size: 100%;
             }
