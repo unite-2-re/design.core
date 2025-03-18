@@ -162,6 +162,16 @@
                 //
                 inline-size: max-content !important;
                 block-size: max-content !important;
+                max-inline-size: none !important;
+
+                //
+                justify-content: center;
+                align-content: center;
+                justify-items: center;
+                align-items: center;
+                justify-self: center;
+                align-self: center;
+                text-align: center;
 
                 //
                 font-size: calc(var(--icon-size) * 0.15);
