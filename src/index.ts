@@ -1,13 +1,17 @@
-// @ts-ignore
-import { hash, loadInlineStyle } from "/externals/lib/dom.js";
 
 // @ts-ignore
 import styles from "./$scss$/_GridDesign.scss?inline&compress";
 const preInit = URL.createObjectURL(new Blob([styles], {type: "text/css"}));
-const integrity = hash(styles);
+
+// @ts-ignore /* @vite-ignore */
+import {importCdn} from "/externals/modules/cdnImport.mjs";
+export {importCdn};
 
 //
-const initialize = (rootElement = document.head)=>{
+const initialize = async (rootElement = document.head)=>{
+    // @ts-ignore
+    const {hash, loadInlineStyle} = await Promise.try(importCdn, ["/externals/lib/dom.js"]);
+    const integrity = hash(styles);
     loadInlineStyle(preInit, rootElement);
 }
 
